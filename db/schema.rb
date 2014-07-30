@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20140730115017) do
 
   create_table "shifts", force: true do |t|
     t.integer  "project_id"
-    t.date     "startDate"
-    t.date     "endDate"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20140730115017) do
     t.string   "name"
     t.string   "surname"
     t.string   "email"
+    t.string   "encrypted_password"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
