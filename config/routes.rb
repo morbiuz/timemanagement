@@ -1,6 +1,4 @@
 Timemanagement::Application.routes.draw do
-  get "project/new"
-  get "shifts/new"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -15,6 +13,17 @@ Timemanagement::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  
+  
+  resources :users do
+    resources :projects do
+	  resources :shifts
+	end
+  end
+  
+  root :to => redirect('/users')
+	
+  
 
   # Example resource route with options:
   #   resources :products do
