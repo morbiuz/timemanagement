@@ -46,3 +46,6 @@ end
 
 # HAML templates
 gem 'haml-rails'
+
+# Password encryptions
+gem 'bcrypt'

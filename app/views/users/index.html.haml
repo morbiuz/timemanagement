@@ -4,13 +4,11 @@
 	%thead
 		%tr
 			%th Name 
-			%th Surname
 			%th Email
 	%tbody
 		- @users.each do |user|
 			%tr
 				%td= user.name
-				%td= user.surname
 				%td= user.email
 
 = link_to 'Add new user', new_user_path

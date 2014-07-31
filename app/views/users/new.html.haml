@@ -1,14 +1,22 @@
 %h2 Create New User
 
-= form_tag users_path, :method => :post do
+= form_tag users_path, :method => :post, :controller => 'users', :action => 'create' do
 
-	= label :user, :name, 'Name'
-	= text_field :user, :name
+	%p= label :user, :name, 'Name'
+	%p= text_field :user, :name
 
-	= label :user, :surname, 'Surname'
-	= text_field :user, :surname
+	%p= label :user, :email, 'Email'
+	%p= text_field :user, :email
 
-	= label :user, :email, 'Email'
-	= text_field :user, :email
+	%p= label :user, :password, 'Password'
+	%p= password_field :user, :password
+
+	%p= label :user, :password_confirmation, 'Password confirmation'
+	%p= password_field :user, :password_confirmation
 	
-	= submit_tag 'Save Changes'
+	%p= submit_tag 'Sign up'
+
+= if @user.errors.any?
+	%ul.Signup_errors
+	= for message_error in @user.errors.full_messages
+		%li= message_error
