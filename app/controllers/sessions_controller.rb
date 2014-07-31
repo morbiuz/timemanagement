@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
-	def home
-		render "home"
+	def dashboard
+		if session[:user_id]
+			render "dashboard"
+		else
+			redirect_to :action => 'login'
+		end
 	end
 
 	def login
@@ -13,7 +17,7 @@ class SessionsController < ApplicationController
 		if authorized_user
 			session[:user_id] = authorized_user.id
 			flash[:notice] = "Welcome, you are now logged in as #{authorized_user.name}"
-			redirect_to '/'     #(:action => 'home')
+			redirect_to :action => 'dashboard'
 		else
 			flash[:notice] = "Invalid User name or Password"
 			flash[:color] = "invalid"

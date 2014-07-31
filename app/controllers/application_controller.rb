@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	# For APIs, you may want to use :null_session instead.
 	protect_from_forgery with: :exception
 
-	before_filter :authenticate_user, :only => [:home, :profile, :setting]
+	before_filter :authenticate_user, :only => [:dashboard, :profile, :setting]
 	before_filter :save_login_state, :only => [:login, :login_attempt]
 
 	protected
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
 	def save_login_state
 		if session[:user_id]
-			redirect_to(:controller => 'sessions' , :action => 'home')
+			redirect_to(:controller => 'sessions' , :action => 'dashboard')
 			return false
 		else
 			return true
