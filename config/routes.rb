@@ -22,7 +22,14 @@ Timemanagement::Application.routes.draw do
   end
   
   root :to => redirect('/users')
-	
+	#root :to => "sessions#login"
+  match "signup", :to => "users#new", via: [:get, :post]
+  match "login", :to => "sessions#login", via: [:get]
+  match "login", :to => "sessions#login_attempt", via: [:post]
+  get "logout", :to => "sessions#logout"
+  get "home", :to => "sessions#home"
+  get "profile", :to => "sessions#profile"
+  get "setting", :to => "sessions#setting"
   
 
   # Example resource route with options:

@@ -1,0 +1,13 @@
+%h2 Login
+
+= form_tag :method => :post, :controller => 'sessions', :action => 'login_attempt' do
+
+	%p= label_tag :name_or_email, 'Name or email'
+	%p= text_field_tag :name_or_email
+
+
+	%p= label_tag :login_password, 'Password'
+	%p= password_field_tag :login_password
+	
+	%p= submit_tag 'Log In'
+
