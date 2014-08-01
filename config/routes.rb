@@ -22,7 +22,6 @@ Timemanagement::Application.routes.draw do
 	end
 	
 	root :to => "sessions#home"
-	#root :to => "sessions#login"
 	match "signup", :to => "users#new", via: [:get, :post]
 	match "login", :to => "sessions#login", via: [:get]
 	match "login", :to => "sessions#login_attempt", via: [:post]

@@ -20,7 +20,11 @@ class ProjectsController < ApplicationController
 
 	end	
 
-	def delete
-		
+	def destroy
+		@project_name = Project.find(params[:id]).name
+		Project.destroy(params[:id])
+		flash[:notice] = "Project #{@project_name} was deleted successfully."
+		flash[:color] = "valid"
+		redirect_to "/dashboard"
 	end
 end
