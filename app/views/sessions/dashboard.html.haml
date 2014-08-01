@@ -1,6 +1,8 @@
 %p This is your dashboard
 
-- if @current_projects
+- if @current_projects.empty?
+	%p You haven't created any projects yet!
+- else
 	%p= "Current projects for #{@current_user.name}:"
 
 	%ul
@@ -9,7 +11,6 @@
 				=project.name
 				= link_to " (delete)", "/users/#{@current_user.id}/projects/#{project.id}", :method => :delete
 				
-- else
-	%p You haven't created any projects yet!
+
 
 %a(title="New Project" href="/users/#{@current_user.id}/projects/new")  Create new project
