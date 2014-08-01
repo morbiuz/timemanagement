@@ -9,8 +9,8 @@
 	%p= label :project, :description, 'Description'
 	%p= text_area :project, :description
 
-	%p= label :project, :user_ident, 'user id'
-	%p= text_field :project, :user_ident
+	
+	%p= hidden_field :project, :user_id, :value => @current_user.id
 
 
 	%p= submit_tag 'Create project'

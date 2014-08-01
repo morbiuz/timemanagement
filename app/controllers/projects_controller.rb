@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 
 	def create
 		@current_user =  User.find session[:user_id]
-		@project = Project.new(params[:project].permit(:name, :description, :user_ident))
+		@project = Project.new(params[:project].permit(:name, :description, :user_id))
 		if @project.save
 			flash[:notice] = "Project #{@project.name} created successfully."
 			flash[:color] = "valid"
@@ -19,4 +19,8 @@ class ProjectsController < ApplicationController
 		end
 
 	end	
+
+	def delete
+		
+	end
 end

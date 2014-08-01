@@ -1,10 +1,12 @@
 %p This is your dashboard
 
-%p= "Current projects for #{@current_user.name}:"
+- if @current_projects
+	%p= "Current projects for #{@current_user.name}:"
 
-%ul
-	- @current_projects.each do |project|
-		%li= project.name 
-
+	%ul
+		- @current_projects.each do |project|
+			%li= project.name 
+- else
+	%p You haven't created any projects yet!
 
 %a(title="New Project" href="/users/#{@current_user.id}/projects/new")  Create new project

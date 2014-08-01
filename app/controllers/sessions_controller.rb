@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 	def dashboard
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
-			@current_projects = Project.all
+			@current_projects = Project.where("user_id = ?",@current_user.id)
 			render "dashboard"
 		else
 			redirect_to :action => 'login'
