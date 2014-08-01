@@ -28,9 +28,8 @@ Timemanagement::Application.routes.draw do
 	match "login", :to => "sessions#login_attempt", via: [:post]
 	get "logout", :to => "sessions#logout"
 	get "dashboard", :to => "sessions#dashboard"
-	get "profile", :to => "sessions#profile"
-	get "setting", :to => "sessions#setting"
-	#get "home", :to => "sessions#home"
+	# get "profile", :to => "sessions#profile"
+	# get "setting", :to => "sessions#setting"
 	
 
 	# Example resource route with options:
