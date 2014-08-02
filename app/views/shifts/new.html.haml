@@ -1,0 +1,23 @@
+%p= "Add shift to #{@project.name}"
+
+= form_tag user_project_shifts_path, :method => :post, :controller => 'shifts', :action => 'create' do
+
+	%p= label :shift, :start_date, 'Start date'
+	%p= datetime_select :shift, :start_date
+
+	%p= label :project, :description, 'Description'
+	%p= text_area :project, :description
+
+	
+	%p= hidden_field :shift, :project_id, :value => @project.id
+
+
+	%p= submit_tag 'Create project'
+
+= if @shift.errors.any?
+	%ul.Signup_errors
+	= for message_error in @shift.errors.full_messages
+		%li= message_error
+
+
+= link_to "Back to project", "/users/#{params[:user_id]}/projects/#{params[:project_id]}"
