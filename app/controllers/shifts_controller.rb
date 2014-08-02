@@ -1,5 +1,7 @@
 class ShiftsController < ApplicationController
 
+	before_filter :check_user, :only => [:show, :new, :create, :destroy]
+
 	def new
 		@project = Project.find params[:project_id]
 		@shift = Shift.new
@@ -20,4 +22,15 @@ class ShiftsController < ApplicationController
 		end
 
 	end	
+
+	def check_user
+		#check that user in session is the same as user in url
+		if session[:user_id].to_i == params[:user_id].to_i
+			return true
+		else
+			redirect_to(:controller => 'sessions' , :action => 'dashboard')
+			return false
+		end
+	end
+	
 end

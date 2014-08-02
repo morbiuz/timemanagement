@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 	
+	before_filter :check_user, :only => [:show, :new, :create, :destroy]
+
 	def new
 		@project = Project.new
 		@current_user =  User.find session[:user_id]
@@ -29,5 +31,15 @@ class ProjectsController < ApplicationController
 		flash[:notice] = "Project #{@project_name} was deleted successfully."
 		flash[:color] = "valid"
 		redirect_to "/dashboard"
+	end
+
+	def check_user
+		#check that user in session is the same as user in url
+		if session[:user_id].to_i == params[:user_id].to_i
+			return true
+		else
+			redirect_to(:controller => 'sessions' , :action => 'dashboard')
+			return false
+		end
 	end
 end
