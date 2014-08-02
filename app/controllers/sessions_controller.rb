@@ -32,4 +32,10 @@ class SessionsController < ApplicationController
 		redirect_to :action => 'login'
 	end
 
+	def home
+		if session[:user_id] 
+			@current_user = User.find session[:user_id]
+		end
+	end
+
 end
