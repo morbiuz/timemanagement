@@ -1,8 +1,13 @@
 %h3= @project.name
 %p= @project.description
-%p= "Total time spent in this project is #{@project.total_time_textual}, #{@project.total_time}"
+%p
+	- if @project.total_time == 0
+		You haven't spent time with this project yet.
+	- else
+		= "Total time spent in this project is #{@project.total_time_textual} "
+		= link_to "(view or delete shifts)", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/"
 
-%p= link_to "Add more time", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/new"
+%p= link_to "Add a shift", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/new"
 
 
 
