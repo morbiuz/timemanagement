@@ -10,7 +10,8 @@ class ShiftsController < ApplicationController
 	def create
 		@project = Project.find params[:project_id]
 		@user = User.find params[:user_id]
-		@shift = Shift.new(params[:shift].permit(:project_id,:start_date,:end_date))
+		#used params[:shift].permit! so the full Shift hash is permitted, since datetime variables create sub-hashes
+		@shift = Shift.new(params[:shift].permit!) 
 		if @shift.save
 			flash[:notice] = "Shift added successfully."
 			flash[:color] = "valid"
@@ -20,7 +21,6 @@ class ShiftsController < ApplicationController
 			flash[:color] = "invalid"
 			render "new"
 		end
-
 	end	
 
 	def check_user

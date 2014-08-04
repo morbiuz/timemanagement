@@ -5,8 +5,8 @@
 	%p= label :shift, :start_date, 'Start date'
 	%p= datetime_select :shift, :start_date
 
-	%p= label :project, :description, 'Description'
-	%p= text_area :project, :description
+	%p= label :shift, :end_date, 'Description'
+	%p= datetime_select :shift, :end_date
 
 	
 	%p= hidden_field :shift, :project_id, :value => @project.id

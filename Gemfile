@@ -49,3 +49,6 @@ gem 'haml-rails'
 
 # Password encryptions
 gem 'bcrypt'
+
+# Datetime validation
+gem 'validates_timeliness', '~> 3.0'
