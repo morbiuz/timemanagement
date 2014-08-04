@@ -17,4 +17,18 @@ class Project < ActiveRecord::Base
 		return @total_time
 
 	end
+
+	def total_time_textual
+		seconds = total_time
+		mm, ss = seconds.divmod(60)
+		hh, mm = mm.divmod(60)
+		dd, hh = hh.divmod(24)
+		@textual_time = ""
+		@textual_time += "#{dd} " + 'day'.pluralize(dd) + ' ' unless dd == 0
+		@textual_time += "#{hh} " + 'hour'.pluralize(hh) + ' ' unless hh == 0
+		@textual_time += "#{mm} " + 'minute'.pluralize(mm) + ' ' unless mm == 0
+		@textual_time += "#{dd} " + 'second'.pluralize(ss) + ' ' unless ss == 0
+		return @textual_time
+	end
+
 end
