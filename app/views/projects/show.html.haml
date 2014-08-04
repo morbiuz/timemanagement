@@ -1,5 +1,9 @@
 %h3= @project.name
 %p= @project.description
-%p= "Total time spent in this project is #{@project.total_time.to_s}"
+%p= "Total time spent in this project is #{distance_of_time_in_words(@project.total_time)}"
 
-= link_to "Back to dashboard", dashboard_path
+%p= link_to "Add more time", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/new"
+
+
+
+%p= link_to "Back to dashboard", dashboard_path
