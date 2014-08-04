@@ -2,6 +2,11 @@ class ShiftsController < ApplicationController
 
 	before_filter :check_user, :only => [:show, :new, :create, :destroy]
 
+	def index
+		@project = Project.find params[:project_id]
+		@shifts = Shift.where('project_id = ?',@project.id)
+	end
+
 	def new
 		@project = Project.find params[:project_id]
 		@shift = Shift.new
@@ -23,6 +28,15 @@ class ShiftsController < ApplicationController
 		end
 	end	
 
+	def destroy
+		@project = Project.find params[:project_id]
+		@user = User.find params[:user_id]
+		Shift.destroy(params[:id])
+		flash[:notice] = "Shift deleted successfully."
+		flash[:color] = "valid"
+		redirect_to "/users/#{@user.id}/projects/#{@project.id}/shifts"
+	end
+
 	def check_user
 		#check that user in session is the same as user in url
 		if session[:user_id].to_i == params[:user_id].to_i
@@ -32,5 +46,7 @@ class ShiftsController < ApplicationController
 			return false
 		end
 	end
+
+
 	
 end
