@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password
 	after_save :clear_password
 
+
+	def self.create_with_omniauth(auth)
+		User.create!(
+			:provider => auth['provider'],
+			:uid => auth['uid'],
+			:name => auth['info']['name'])
+	end
+
 	def encrypt_password
 		if password.present?
 			self.salt = BCrypt::Engine.generate_salt

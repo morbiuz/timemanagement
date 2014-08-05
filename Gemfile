@@ -52,3 +52,7 @@ gem 'bcrypt'
 
 # Datetime validation
 gem 'validates_timeliness', '~> 3.0'
+
+# Omniauth
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'

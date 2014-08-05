@@ -29,6 +29,9 @@ Timemanagement::Application.routes.draw do
 	get "dashboard", :to => "sessions#dashboard"
 	# get "profile", :to => "sessions#profile"
 	# get "setting", :to => "sessions#setting"
+
+	get 'auth/:provider/callback' => 'sessions#login_auth'
+	get 'auth/failure' => 'sesions#failure'
 	
 
 	# Example resource route with options:
