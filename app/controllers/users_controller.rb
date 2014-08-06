@@ -13,9 +13,10 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user].permit(:name, :email, :password, :password_confirmation, :provider))
 		if @user.save
-			flash[:notice] = "You signed up successfully"
+			flash[:notice] = "You signed up successfully."
 			flash[:color] = "valid"
-			redirect_to "/"
+			session[:user_id] = @user.id
+			redirect_to "/dashboard"
 		else
 			flash[:notice] = "Form is invalid"
 			flash[:color] = "invalid"
