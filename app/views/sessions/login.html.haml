@@ -11,5 +11,10 @@
 	
 	%p= submit_tag 'Log In'
 
+	%p
+		Or login using
+		= link_to "Facebook", '/auth/facebook'
+		or
+		= link_to "Twitter", '/auth/twitter'
 
 = link_to "Back to homepage", root_path

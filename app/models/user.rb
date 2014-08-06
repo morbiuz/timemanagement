@@ -39,10 +39,9 @@ class User < ActiveRecord::Base
 
 	def self.authenticate(user_or_email="", login_password="")
 		if EMAIL_REGEX.match(user_or_email)
-			user = User.find_by_email(user_or_email)
-			puts "USER FOUND: #{user.name}"
+			user = User.where("email = ? AND provider = ?", user_or_email, 'registered').first
 		else
-			user = User.find_by_name(user_or_email)
+			user = User.where("name = ? AND provider = ?", user_or_email, 'registered').first
 		end
 		if user && user.match_password(login_password)
 			return user

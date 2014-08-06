@@ -10,7 +10,13 @@ Features include:
 - if @current_user
 	= link_to "Go to your dashboard", dashboard_path
 - else
-	= link_to "Register", signup_path
-	or
-	= link_to "Login", login_path
-	to get the most of --TIME MANAGEMENT--
+	%p 
+		= link_to "Register", signup_path
+		or
+		= link_to "Login", login_path
+		to get the most of --TIME MANAGEMENT--
+	%p
+		Or login using
+		= link_to "Facebook", '/auth/facebook'
+		or
+		= link_to "Twitter", '/auth/twitter'

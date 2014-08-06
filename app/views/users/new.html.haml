@@ -13,6 +13,8 @@
 
 	%p= label :user, :password_confirmation, 'Password confirmation'
 	%p= password_field :user, :password_confirmation
+
+	%p= hidden_field :user, :provider, :value => 'registered'
 	
 	%p= submit_tag 'Sign up'
 
