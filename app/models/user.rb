@@ -6,10 +6,14 @@ class User < ActiveRecord::Base
 
 	attr_accessor :password
 	EMAIL_REGEX = /\A\S+@.+\.\S+\z/
-	validates :name, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
-	validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
-	validates :password, :confirmation => true #password_confirmation attr
-	validates_length_of :password, :in => 6..20, :on => :create
+
+	#only validate when user is created through register form
+	with_options :if => "provider.nil?" do |regular_user|
+		regular_user.validates :name, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
+		regular_user.validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
+		regular_user.validates :password, :confirmation => true #password_confirmation attr
+		regular_user.validates_length_of :password, :in => 6..20, :on => :create
+	end
 
 	before_save :encrypt_password
 	after_save :clear_password
