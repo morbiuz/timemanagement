@@ -202,7 +202,6 @@ DEPENDENCIES
   omniauth-twitter
   pg
   rails (= 4.0.2)
-  rake
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.0)
   sdoc
