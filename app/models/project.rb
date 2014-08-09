@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
 		@total_time = 0
 		@project_shifts = Shift.where("project_id = ?",id)
 		@project_shifts.each do |shift|
-			@total_time += shift.end_date - shift.start_date
+			@total_time += (shift.end_date - shift.start_date).round
 		end
 		return @total_time
 
