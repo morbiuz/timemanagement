@@ -60,12 +60,12 @@ gem 'omniauth-facebook'
 # Development and testing
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', :require => false
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  gem 'rspec-rails', '~> 3.0.0'
 end

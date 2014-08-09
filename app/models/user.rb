@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
 	attr_accessor :password
 	EMAIL_REGEX = /\A\S+@.+\.\S+\z/
-
+	validates :provider, :presence => true
+	
 	#only validate when user is created through register form
 	with_options :if => "provider == 'registered'" do |regular_user|
 		regular_user.validates :name, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
