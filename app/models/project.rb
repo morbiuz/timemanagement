@@ -10,8 +10,6 @@ class Project < ActiveRecord::Base
 		@total_time = 0
 		@project_shifts = Shift.where("project_id = ?",id)
 		@project_shifts.each do |shift|
-			puts shift.end_date.to_s
-			puts shift.start_date.to_s
 			@total_time += shift.end_date - shift.start_date
 		end
 		return @total_time
@@ -20,6 +18,7 @@ class Project < ActiveRecord::Base
 
 	def total_time_textual
 		seconds = total_time
+		if seconds == 0 then return "none" end
 		mm, ss = seconds.divmod(60)
 		hh, mm = mm.divmod(60)
 		dd, hh = hh.divmod(24)
