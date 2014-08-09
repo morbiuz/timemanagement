@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
 		@textual_time += "#{dd} " + 'day'.pluralize(dd) + ' ' unless dd == 0
 		@textual_time += "#{hh} " + 'hour'.pluralize(hh) + ' ' unless hh == 0
 		@textual_time += "#{mm} " + 'minute'.pluralize(mm) + ' ' unless mm == 0
-		@textual_time += "#{dd} " + 'second'.pluralize(ss) + ' ' unless ss == 0
+		@textual_time += "#{ss} " + 'second'.pluralize(ss) + ' ' unless ss == 0
 		return @textual_time
 	end
 
