@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			flash[:notice] = "Project #{@project.name} created successfully."
 			flash[:color] = "valid"
-			redirect_to "/dashboard"
+			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
 		else
 			flash[:notice] = "Invalid project data"
 			flash[:color] = "invalid"
@@ -41,5 +41,10 @@ class ProjectsController < ApplicationController
 			redirect_to(:controller => 'sessions' , :action => 'login')
 			return false
 		end
+	end
+
+	def project_url
+		@project = Project.find(params[:id])
+		return '/users/#{@project.user_id}/projects/#{@project.id}'
 	end
 end
