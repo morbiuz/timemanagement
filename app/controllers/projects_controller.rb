@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
 		if session[:user_id].to_i == params[:user_id].to_i
 			return true
 		else
-			redirect_to(:controller => 'sessions' , :action => 'dashboard')
+			redirect_to(:controller => 'sessions' , :action => 'login')
 			return false
 		end
 	end

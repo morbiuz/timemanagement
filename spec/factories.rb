@@ -9,6 +9,7 @@ FactoryGirl.define do
 	factory :project do
 		user
 		name "Awesome Project"
+		description "This is an awesome project description"
 	end
 	factory :shift do
 		project

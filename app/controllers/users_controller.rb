@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_filter :save_login_state, :only => [:new, :create]
 	
 	def index
-		@users = User.all
+		redirect_to login_path
 	end
 	
 	def new
