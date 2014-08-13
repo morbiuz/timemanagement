@@ -52,5 +52,36 @@ RSpec.describe ProjectsController, :type => :controller do
 		it 'deletes the project' do
 			expect{ delete :destroy, user_id: @user.id, id: @project }.to change(Project,:count).by(-1)
 		end
+		it 'redirects back to dashboard' do
+			delete :destroy, user_id: @user.id, id: @project
+			expect(response).to redirect_to dashboard_path
+		end
+	end
+
+	describe 'Show project' do
+		it 'renders the correct template' do
+			get :show, user_id: @user.id, id: @project
+			expect(response).to render_template 'show'
+		end
+		it 'assigns the requested project to @project' do
+			get :show, user_id: @user.id, id: @project
+			expect(assigns(:project)).to eq(@project)
+		end
+	end
+
+	describe 'Edit project' do
+		it 'locates the requested @project' do
+			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
+			expect(assigns(:project)).to eq(@project)
+		end
+		it 'changes @project\'s attributes' do
+			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,name: "Another project", user_id: @user.id)
+			@project.reload
+			expect(@project.name).to eq("Another project")
+		end
+		it 'redirects to the updated contact' do
+			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
+			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
+		end
 	end
 end

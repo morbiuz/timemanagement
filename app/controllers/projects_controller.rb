@@ -33,6 +33,19 @@ class ProjectsController < ApplicationController
 		redirect_to "/dashboard"
 	end
 
+	def edit
+		@project = Project.find(params[:id])
+	end
+
+	def update
+		@project = Project.find(params[:id])
+		if @project.update(params[:project].permit(:name, :description, :user_id))
+			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
+		else
+			render 'edit'
+		end
+	end
+
 	def check_user
 		#check that user in session is the same as user in url
 		if session[:user_id].to_i == params[:user_id].to_i
@@ -43,8 +56,5 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def project_url
-		@project = Project.find(params[:id])
-		return '/users/#{@project.user_id}/projects/#{@project.id}'
-	end
+
 end
