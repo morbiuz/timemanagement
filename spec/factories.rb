@@ -21,4 +21,9 @@ FactoryGirl.define do
 		start_date Time.now - 10.minutes
 		end_date Time.now
 	end
+	factory :invalid_shift, parent: :shift do
+		project
+		start_date Time.now - 10.minutes
+		end_date Time.now - 20.minutes
+	end
 end

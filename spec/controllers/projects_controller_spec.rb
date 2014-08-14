@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# Rails.application.routes.draw do
-#   match "/logout" => "sessions#logout", :as => "logout", :via => "get"
-# end
-
 RSpec.describe ProjectsController, :type => :controller do
 	before(:each) do
     	@user = FactoryGirl.create(:user)
@@ -79,7 +75,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			@project.reload
 			expect(@project.name).to eq("Another project")
 		end
-		it 'redirects to the updated contact' do
+		it 'redirects to the updated project' do
 			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
