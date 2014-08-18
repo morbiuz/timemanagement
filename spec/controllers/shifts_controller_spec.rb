@@ -66,11 +66,11 @@ RSpec.describe ShiftsController, :type => :controller do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)
 			expect(assigns(:shift)).to eq(@shift)
 		end
-		pending(it 'changes @shift\'s attributes') do
-			time = Time.now.utc
-			put :update, user_id: @user.id, project_id: @project.id, id: @shift,shift: FactoryGirl.attributes_for(:shift,end_date: time, project_id: @project.id)
+		it 'changes @shift\'s attributes' do
+			time = Time.parse("01/01/2014 10:00")
+			put :update, user_id: @user.id, project_id: @project.id, id: @shift,shift: FactoryGirl.attributes_for(:shift,start_date: time, project_id: @project.id)
 			@shift.reload
-			expect(@shift.end_date).to eq(time)
+			expect(@shift.start_date).to eq(time)
 		end
 		it 'redirects to the updated shifts list' do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)
