@@ -10,5 +10,6 @@
 %p= link_to "Add a shift", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/new"
 
 
+= column_chart Shift.group_by_day(:end_date).count
 
 %p= link_to "Back to dashboard", dashboard_path

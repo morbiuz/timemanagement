@@ -59,6 +59,7 @@ gem 'omniauth-facebook'
 
 # Charts
 gem "chartkick"
+gem "groupdate"
 
 # Development and testing
 
