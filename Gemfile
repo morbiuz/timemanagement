@@ -57,6 +57,9 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+# Charts
+gem "chartkick"
+
 # Development and testing
 
 group :development, :test do

@@ -6,7 +6,7 @@ class Shift < ActiveRecord::Base
 	validates_datetime :end_date, :after => :start_date
 
 	def to_s
-		@text_duration = "From #{start_date.to_s} to #{end_date.to_s}"
+		@text_duration = "From #{start_date.to_s(:long)} to #{end_date.to_s(:long)}"
 		return @text_duration
 	end
 end
