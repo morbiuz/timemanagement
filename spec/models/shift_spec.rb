@@ -16,8 +16,8 @@ RSpec.describe Shift, :type => :model do
 	end
 	it "should return a valid string with start and end dates" do
 		time = Time.now
-		shift = FactoryGirl.build(:shift, :start_date => time - 10.minutes, :end_date => time)
-		expect(shift.to_s).to eq("From #{(time.utc-10.minutes).to_s(:long)} to #{time.utc.to_s(:long)}")
+		@shift = FactoryGirl.create(:shift, :start_date => time - 6.minutes, :end_date => time)
+		expect(@shift.to_s).to eq("From #{(time.utc-6.minutes).to_s(:long)} to #{time.utc.to_s(:long)} (0.1 hours)")
 	end
 
 end
