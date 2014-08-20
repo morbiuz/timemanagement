@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
 			@current_projects = Project.where("user_id = ?",@current_user.id)
+			@current_shifts = Shift.joins(:project).where(projects: { user_id: @current_user.id})
 			render "dashboard"
 		else
 			redirect_to :action => 'login'

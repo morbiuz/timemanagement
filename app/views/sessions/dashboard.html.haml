@@ -11,7 +11,10 @@
 				= link_to project.name, "/users/#{@current_user.id}/projects/#{project.id}"
 				= " ("+distance_of_time_in_words(project.total_time)+" spent)"
 				= link_to " (delete)", "/users/#{@current_user.id}/projects/#{project.id}", :method => :delete
-				
+	
+
+= column_chart @current_projects.map{ |project| { name: project.name, data: project.shifts.group_by_day(:end_date, format: "%D", last: 7 ).sum(:duration)  } }, library: {backgroundColor: "#eee",vAxis: {title: 'Hours'}, title: "Activity on the last week"}, stacked: true
+
 
 
 %a(title="New Project" href="/users/#{@current_user.id}/projects/new")  Create new project
