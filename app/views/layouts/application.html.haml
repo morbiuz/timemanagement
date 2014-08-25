@@ -8,11 +8,20 @@
     = csrf_meta_tags
 
   %body
-    %h1.title Time Management
-    %p
-      - if @current_user
-        Logged in as #{@current_user.name}, 
-        %a(title="Logout" href=logout_path) Logout
+    #header
+      %h1.title Time Management
+      %p
+        - if @current_user
+          Logged in as #{@current_user.name}, 
+          %a(title="Logout" href=logout_path) Logout
+
+    #nav
+      %ul
+        %li Dashboard
+        %li Profile
+        %li Statistics
+        %li Logout
+
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
@@ -20,3 +29,6 @@
         #warning.message= flash[:warning]
 
       = yield
+
+    #footer
+      %p Copyright 2014. Miguel Cabrera
