@@ -11,3 +11,50 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+	margin: 0;
+}
+
+#container{
+	width: 100%;
+	display: block;
+	background: black;
+	overflow: hidden;
+}
+
+#header {
+	background: #00A0B0;
+	width: 80%;
+	float: right;
+}
+
+#header h1{
+	margin: 0;
+}
+
+#header p{
+	margin: 0;
+}
+
+#nav {
+	background: #CC333F;
+	width: 20%;
+	max-width: 300px;
+	height: 100%;
+	float: left;
+	display: block;
+}
+
+#main {
+	background: #EDC951;
+	float: left;
+	width: 80%;
+	display: block;
+}
+
+#footer {
+	background: #EB6841;
+	width: 100%;
+	float: left;
+}

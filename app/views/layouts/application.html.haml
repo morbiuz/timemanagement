@@ -8,27 +8,29 @@
     = csrf_meta_tags
 
   %body
-    #header
-      %h1.title Time Management
-      %p
-        - if @current_user
-          Logged in as #{@current_user.name}, 
-          %a(title="Logout" href=logout_path) Logout
 
-    #nav
-      %ul
-        %li Dashboard
-        %li Profile
-        %li Statistics
-        %li Logout
+    #container
+      #header
+        %h1.title Time Management
+        %p
+          - if @current_user
+            Logged in as #{@current_user.name}, 
+            %a(title="Logout" href=logout_path) Logout
 
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
+      #nav
+        %ul
+          %li Dashboard
+          %li Profile
+          %li Statistics
+          %li Logout
 
-      = yield
+      #main
+        - if flash[:notice]
+          #notice.message= flash[:notice]
+        - elsif flash[:warning]
+          #warning.message= flash[:warning]
+
+        = yield
 
     #footer
       %p Copyright 2014. Miguel Cabrera
