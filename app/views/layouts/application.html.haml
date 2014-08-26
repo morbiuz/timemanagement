@@ -9,22 +9,22 @@
 
   %body
 
-    #container
-      #header
+    .wrapper
+      %header.header
         %h1.title Time Management
         %p
           - if @current_user
             Logged in as #{@current_user.name}, 
             %a(title="Logout" href=logout_path) Logout
 
-      #nav
+      %nav.nav
         %ul
           %li Dashboard
           %li Profile
           %li Statistics
           %li Logout
 
-      #main
+      .main
         - if flash[:notice]
           #notice.message= flash[:notice]
         - elsif flash[:warning]
@@ -32,5 +32,5 @@
 
         = yield
 
-    #footer
+      %footer.footer
       %p Copyright 2014. Miguel Cabrera
