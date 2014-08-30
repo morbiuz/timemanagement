@@ -1,5 +1,5 @@
 
-%section.dashboard_content
+%section.dashboard-content
 
 	%p This is your dashboard
 
@@ -17,7 +17,7 @@
 
 	%a(title="New Project" href="/users/#{@current_user.id}/projects/new")  Create new project
 
-%section.dashboard_graph	
+%section.dashboard-graph	
 
 	= column_chart @current_projects.map{ |project| { name: project.name, data: project.shifts.group_by_day(:end_date, format: "%D", last: 7 ).sum(:duration)  } }, library: {backgroundColor: "#eee",vAxis: {title: 'Hours'}, title: "Activity on the last week"}, stacked: true
 
