@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+html,body {
+	margin: 0;
+	height: 100%;
+	min-height: 100%;
+}
+
+.wrapper{
+	background: gray;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	/*overflow: hidden;*/
+	position: relative;
+	min-height: 100%;
+	height: 100%;
+
+}
+
+.header, .main, .nav, .footer {
+  flex: 1 100%;
+}
+
+.header {
+	background: #00A0B0;
+	height: 80px;
+}
+
+.header h1{
+	float: left;
+	padding-left: 20px;
+}
+
+.header p {
+	float: right;
+	padding-right: 20px;
+}
+
+.nav {
+	background: #CC333F;
+}
+
+.main {
+	background: #EDC951;
+	padding: 20px;
+}
+
+.footer {
+	background: #EB6841;
+	height: 52px;
+}
+
+/* Large screens */
+@media all and (min-width: 800px) {
+	.nav { flex: 1 auto;}
+	.main { flex: 6 0px;}
+
+	.header { min-height: 12%; }
+	.nav { min-height: 78%; }
+	.footer { min-height: 8%; }
+
+}
+
+
+
+@media all and (min-width: 800px) {
+  /* line 8, C:/morbiuz/docs/dev/ruby/timemanagement/app/assets/stylesheets/sessions.css.scss */
+  .dashboard-content {
+    max-width: 50%;
+    float: left;
+  }
+
+  /* line 13, C:/morbiuz/docs/dev/ruby/timemanagement/app/assets/stylesheets/sessions.css.scss */
+  .dashboard-graph {
+    max-width: 50%;
+    width: 50%;
+    float: right;
+  }
+}
