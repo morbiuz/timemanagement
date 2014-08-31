@@ -19,4 +19,4 @@
 /config/initializers/secret_token.rb
 
 # Ignore gemfile.lock since it is being created on windows, causing problems
-#/Gemfile.lock
+/Gemfile.lock
