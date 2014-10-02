@@ -9,6 +9,23 @@ RSpec.describe Project, :type => :model do
 		expect(FactoryGirl.build(:project, :name => "")).not_to be_valid
 	end
 
+	it "should not be finished by default" do
+		project = FactoryGirl.build(:project)
+		expect(project.finished).to eq(false)
+	end
+
+	it "should change to finished when finish is called" do
+		project = FactoryGirl.build(:project)
+		project.finish
+		expect(project.finished).to eq(true)
+	end
+
+	it "should change to not finished when resume is called" do
+		project = FactoryGirl.build(:project, :finished => true)
+		project.resume
+		expect(project.finished).to eq(false)
+	end
+
 	it "should return total time spent in seconds" do
 		project = FactoryGirl.create(:project)
 		FactoryGirl.create(:shift, :project_id => project.id)

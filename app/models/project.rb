@@ -5,6 +5,13 @@ class Project < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :user_id, :presence => true
 
+	after_initialize :defaults
+
+	def defaults
+		self.description ||= 'No description provided'
+		self.finished = false if self.finished.nil?
+	end
+
 	def total_time
 
 		@total_time = 0
@@ -28,6 +35,14 @@ class Project < ActiveRecord::Base
 		@textual_time += "#{mm} " + 'minute'.pluralize(mm) + ' ' unless mm == 0
 		@textual_time += "#{ss} " + 'second'.pluralize(ss) + ' ' unless ss == 0
 		return @textual_time
+	end
+
+	def finish
+		self.finished = true
+	end
+
+	def resume
+		self.finished = false
 	end
 
 end
