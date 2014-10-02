@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
 	def dashboard
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
-			@current_projects = Project.where("user_id = ?",@current_user.id)
+			@user_projects = Project.where("user_id = ?",@current_user.id)
+			@current_projects = @user_projects.where("finished = ?", false)
+			@finished_projects = @user_projects.where("finished = ?", true)
 			@current_shifts = Shift.joins(:project).where(projects: { user_id: @current_user.id})
 			render "dashboard"
 		else

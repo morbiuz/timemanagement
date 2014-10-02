@@ -9,6 +9,12 @@
 
 %p= link_to "Add a shift", "/users/#{@project.user_id}/projects/#{@project.id}/shifts/new"
 
+%p
+	- if @project.finished 
+		%a= link_to "Resume project", "/users/#{@project.user_id}/projects/#{@project.id}/resume"
+	- else
+		%a= link_to "Finish project", "/users/#{@project.user_id}/projects/#{@project.id}/finish"
+
 
 = column_chart Shift.where('project_id' => @project.id).group_by_day(:end_date, format: "%D", last: 7 ).sum(:duration), library: {backgroundColor: "#eee",vAxis: {title: 'Hours'}, title: "Activity on the last week"}
 
