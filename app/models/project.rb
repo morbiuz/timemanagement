@@ -8,7 +8,6 @@ class Project < ActiveRecord::Base
 	after_initialize :defaults
 
 	def defaults
-		self.description ||= 'No description provided'
 		self.finished = false if self.finished.nil?
 	end
 
