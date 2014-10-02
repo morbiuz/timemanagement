@@ -46,6 +46,32 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+	def finish
+		@project = Project.find(params[:id])
+		if @project.finished
+			flash[:notice] = "Project #{@project.name} is already finished."
+			flash[:color] = "invalid"
+			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
+		else
+			@project.finish
+			redirect_to "/dashboard"
+		end
+	end
+
+	def resume
+		@project = Project.find(params[:id])
+		if @project.finished
+			@project.resume
+			puts "Usuario: #{@project.user_id}"
+			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
+		else
+			puts "project ongoing"
+			flash[:notice] = "Project #{@project.name} is ongoing."
+			flash[:color] = "invalid"
+			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
+		end
+	end
+
 	def check_user
 		#check that user in session is the same as user in url
 		if session[:user_id].to_i == params[:user_id].to_i

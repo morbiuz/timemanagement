@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProjectsController, :type => :controller do
 	before(:each) do
     	@user = FactoryGirl.create(:user)
-    	@project = FactoryGirl.create(:project,:user_id => 1)
+    	@project = FactoryGirl.create(:project,:user_id => @user.id)
     	session[:user_id] = @user.id
   	end  
 
@@ -77,6 +77,41 @@ RSpec.describe ProjectsController, :type => :controller do
 		end
 		it 'redirects to the updated project' do
 			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
+			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
+		end
+	end
+
+	describe 'Finish project' do
+		it 'locates the requested @project' do
+			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
+			expect(assigns(:project)).to eq(@project)
+		end
+		it 'changes @project\'s finished attribute' do
+			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
+			@project.reload
+			expect(@project.finished).to eq(true)
+		end
+		it 'redirects to the dashboard' do
+			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
+			expect(response).to redirect_to "/dashboard"
+		end
+	end
+
+	describe 'Resume project' do
+		it 'locates the requested @project' do
+			@project.finish
+			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
+			expect(assigns(:project)).to eq(@project)
+		end
+		it 'changes @project\'s finished attribute' do
+			@project.finish
+			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
+			@project.reload
+			expect(@project.finished).to eq(false)
+		end
+		it 'redirects back to the project' do
+			@project.finish
+			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
 	end

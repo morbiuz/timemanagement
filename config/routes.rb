@@ -17,6 +17,10 @@ Timemanagement::Application.routes.draw do
 	
 	resources :users do
 		resources :projects do
+			member do
+				get 'finish'
+				get 'resume'
+			end
 			resources :shifts
 		end
 	end

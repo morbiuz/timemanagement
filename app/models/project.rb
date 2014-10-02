@@ -37,11 +37,11 @@ class Project < ActiveRecord::Base
 	end
 
 	def finish
-		self.finished = true
+		self.update(finished: true)
 	end
 
 	def resume
-		self.finished = false
+		self.update(finished: false)
 	end
 
 end
