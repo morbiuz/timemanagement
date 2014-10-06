@@ -62,7 +62,6 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 		if @project.finished
 			@project.resume
-			puts "Usuario: #{@project.user_id}"
 			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
 		else
 			puts "project ongoing"
