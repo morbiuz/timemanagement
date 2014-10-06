@@ -1,0 +1,12 @@
+
+%p This is your account information
+
+%ul
+	%li= "Name: #{@current_user.name}"
+	%li= "E-mail: #{@current_user.email}"
+
+
+%p If you want to cancel your account, click below. This will delete all your information, and cannot be undone.
+
+%a= link_to "Delete my account", "/users/#{@current_user.id}", :method => :delete
+
