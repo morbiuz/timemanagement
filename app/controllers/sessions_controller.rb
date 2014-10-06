@@ -24,6 +24,8 @@ class SessionsController < ApplicationController
 	def statistics
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
+			@total_shifts = Shift.joins(:project).where(projects: { user_id: @current_user.id})
+			@total_hours = @total_shifts.sum(:duration)
 		else
 			redirect_to :action => 'login'
 		end
