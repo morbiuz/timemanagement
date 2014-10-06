@@ -25,4 +25,13 @@ class UsersController < ApplicationController
 
 	end	
 
+	def destroy
+		@user = User.find(params[:id])
+		User.destroy(params[:id])
+		session[:user_id] = nil
+		flash[:notice] = "User #{@user.name} was deleted successfully. Sorry to see you go :_("
+		flash[:color] = "valid"
+		redirect_to root_path
+	end
+
 end
