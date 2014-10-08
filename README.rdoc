@@ -12,7 +12,7 @@ This project teached me how to:
 
 * Use Single Sign-On with Twitter and Facebook accounts
 
-* Show graphs using [Chartkick](https://github.com/ankane/chartkick)
+* Show graphs using {Chartkick}[https://github.com/ankane/chartkick]
 
 * CSS layout with Flexbox
 
