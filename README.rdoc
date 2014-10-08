@@ -2,29 +2,19 @@
 
 == TIME MANAGEMENT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application aims to help freelancers to keep track of the time they spend on each project. It was developed as a way for me to put in practice everything I learned with the edX "Software as a Service" course. 
 
-Things you may want to cover:
+Although it is not entirely polished, you can try it out in http://time-management-app.herokuapp.com/
 
-* Ruby version
+This project teached me how to:
 
-* System dependencies
+* Build a Ruby on Rails project from scratch.
 
-* Configuration
+* Use Single Sign-On with Twitter and Facebook accounts
 
-* Database creation
+* Show graphs using <a href="https://github.com/ankane/chartkick">Chartkick</a>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* CSS layout with Flexbox
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+This project is not intended to be forked or developed collaboratively, but feel free to comment on anything you want. 
