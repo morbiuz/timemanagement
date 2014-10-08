@@ -10,7 +10,7 @@ This project teached me how to:
 
 * Build a Ruby on Rails project from scratch.
 
-* Use Single Sign-On with Twitter and Facebook accounts
+* Use Single Sign-On with Twitter and Facebook accounts (using {Omniauth}[https://github.com/intridea/omniauth])
 
 * Show graphs using {Chartkick}[https://github.com/ankane/chartkick]
 
