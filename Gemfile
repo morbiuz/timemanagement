@@ -66,12 +66,14 @@ gem "groupdate"
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', :require => false
+  gem 'capybara'
 end
 
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'capybara'
 end
 
 # Heroku gem
