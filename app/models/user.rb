@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
 	has_many :projects, dependent: :destroy
 	has_many :shifts, through: :projects
 	
-	#attr_accessible :username, :email, :password, :password_confirmation
 
 	attr_accessor :password
 	EMAIL_REGEX = /\A\S+@.+\.\S+\z/

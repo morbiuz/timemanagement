@@ -1,6 +1,6 @@
 Feature: User can create a new account
 
-Scenario: Create a movie
+Scenario: Create an account
 	Given I am on the home page
 	When I follow "Register"
 	Then I should be on the Create new user page
